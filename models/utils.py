@@ -131,6 +131,7 @@ class VideoStreamer:
         elif Path(basedir).is_dir():
             print('==> Processing image directory input: {}'.format(basedir))
             self.listing = list(Path(basedir).glob(image_glob[0]))
+            self.listing.sort(key=str)
             for j in range(1, len(image_glob)):
                 image_path = list(Path(basedir).glob(image_glob[j]))
                 self.listing = self.listing + image_path

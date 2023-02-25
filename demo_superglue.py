@@ -216,6 +216,11 @@ if __name__ == '__main__':
             last_frame, frame, kpts0, kpts1, mkpts0, mkpts1, color, text,
             path=None, show_keypoints=opt.show_keypoints, small_text=small_text)
 
+        last_data = {k+'0': pred[k+'1'] for k in keys}
+        last_data['image0'] = frame_tensor
+        last_frame = frame
+        last_image_id = (vs.i - 1)
+
         if not opt.no_display:
             cv2.imshow('SuperGlue matches', out)
             key = chr(cv2.waitKey(1) & 0xFF)
